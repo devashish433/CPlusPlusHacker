@@ -1,0 +1,30 @@
+#include <iostream>
+#include <climits> // For INT_MAX
+
+using namespace std;
+
+int main() {
+    int arr[] = {5, 2, 8, 1, 6, 3};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int smallest = INT_MAX;
+    int secondSmallest = INT_MAX;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] < smallest) {
+            secondSmallest = smallest;
+            smallest = arr[i];
+        } else if (arr[i] < secondSmallest && arr[i] != smallest) {
+            secondSmallest = arr[i];
+        }
+    }
+
+    if (secondSmallest == INT_MAX) {
+        cout << "There is no second smallest element.\n";
+    } else {
+        cout << "Smallest: " << smallest << endl;
+        cout << "Second Smallest: " << secondSmallest << endl;
+    }
+
+    return 0;
+}
